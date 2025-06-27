@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-image: url("farm.jpg");
+  background-size: cover;           /* Makes the image cover the entire background */
+  background-position: center;      /* Centers the image */
+  background-repeat: no-repeat;     /* Prevents repeating the image */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ label {
+      font-size: 12px;
+      font-weight: 400;
+      display: block;
+      margin-bottom: 2px;
+      color: black;
+
+      font-family: 'Roboto', sans-serif;
+    }
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 16px;
+      padding: 8px;
+    }
+    .login {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+    }
+
+    .login {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 450px;
+      text-align: center;
+    }
+
+    .login h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2em;
+      color: #4a148c;
+      margin-bottom: 30px;
+    }
+
+    .login input[type="text"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 1em;
+      box-sizing: border-box;
+      transition: 0.3s ease;
+    }
+
+    .login input[type="text"]:focus {
+      border-color: #8e24aa;
+      outline: none;
+    }
+
+    .btn {
+      background: #8e24aa;
+      color: white;
+      padding: 14px 25px;
+      margin-top: 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+    }
+
+    .btn:hover {
+      background: #6a1b9a;
+    }
+
+    #predi {
+      margin-top: 25px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #2e7d32;
+    }
