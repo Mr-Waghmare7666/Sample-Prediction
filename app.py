@@ -2,7 +2,7 @@ import numpy as np
 import socket
 import pickle
 import logging
-from flask import Flask , request, jsonify, render_template, abort
+from flask import Flask, request, jsonify, render_template, abort
 
 # Initialize Flask App
 flask_app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -26,7 +26,7 @@ except Exception as e:
 def resolve_dns(domain):
     try:
         ip = socket.gethostbyname(domain)
-        # Block private IPs (fixes: DNS_HOSTNAME_RESOLVED_PRIVATE 404)
+        # Block private IPs
         if ip.startswith(("10.", "172.", "192.168.")):
             return {"error": "Private IP resolved - not accessible."}
         return {"domain": domain, "ip": ip}
@@ -36,10 +36,7 @@ def resolve_dns(domain):
 # Routes
 @flask_app.route("/")
 def home():
-    try:
-        return render_template("index.html")
-    except:
-        abort(404, description="Resource not found: index.html")
+    return render_template("index.html")
 
 @flask_app.route("/predict", methods=["POST"])
 def predict():
@@ -47,7 +44,7 @@ def predict():
         float_features = [float(x) for x in request.form.values()]
         features = [np.array(float_features)]
         prediction = model.predict(features)
-        result = prediction[0]  # Remove brackets
+        result = prediction[0]
         return render_template("index.html", prediction_text=f"The Predicted Crop is {result}")
     except ValueError as e:
         logging.error("Invalid input: %s", e)
@@ -67,15 +64,9 @@ def dns_lookup():
         return jsonify(result), 404
     return jsonify(result)
 
-# Handle all 404 errors
 @flask_app.errorhandler(404)
 def not_found(e):
     return render_template("404.html", error=str(e)), 404
-
-# Custom 404 page (you must create templates/404.html)
-# Example 404.html content:
-# <h1>404 - Page Not Found</h1>
-# <p>{{ error }}</p>
 
 if __name__ == "__main__":
     flask_app.run(debug=True, port=208)
