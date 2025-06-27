@@ -2,10 +2,10 @@ import numpy as np
 import socket
 import pickle
 import logging
-from flask import Flask, request, jsonify, render_template, abort
+from flask import Flask , request, jsonify, render_template, abort
 
 # Initialize Flask App
-flask_app = Flask(__name__, template_folder='template', static_folder='static')
+flask_app = Flask(__name__, template_folder='templates', static_folder='static')
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
